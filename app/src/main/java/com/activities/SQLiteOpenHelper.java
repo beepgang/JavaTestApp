@@ -19,7 +19,12 @@ class LeaderboardDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (newVersion > oldVersion) {
+            db.execSQL("DROP TABLE IF EXISTS leaderboard");
+            onCreate(db);
+        }
     }
+
 }
 
 class LeaderboardEntry {
