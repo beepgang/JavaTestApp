@@ -27,7 +27,6 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     private void loadLeaderboard() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-
         Cursor cursor = db.query("leaderboard", null, null, null, null, null, "score DESC");
 
         leaderboardTable.removeAllViews();

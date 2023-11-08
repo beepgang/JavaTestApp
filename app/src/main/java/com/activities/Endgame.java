@@ -118,7 +118,7 @@ public class Endgame extends AppCompatActivity {
     private void addRowToLeaderboard(int rank, String name, int score) {
         TableRow row = new TableRow(this);
 
-        String rankText = (rank != 10) ? String.format(Locale.getDefault(), "  %5d ", rank) : "  New  ";
+        String rankText = String.format(Locale.getDefault(), "  %5d ", rank);
         String nameText = String.format(Locale.getDefault(), "            %-10s", name);
         String scoreText = String.format(Locale.getDefault(), "%20d", score);
 
