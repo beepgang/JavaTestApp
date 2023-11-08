@@ -14,13 +14,11 @@ class LeaderboardDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create a table for the leaderboard
         db.execSQL("CREATE TABLE leaderboard (id INTEGER PRIMARY KEY, name TEXT, score INTEGER)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Handle database upgrades if needed
     }
 }
 
@@ -60,11 +58,4 @@ class LeaderboardEntry {
     public int getScore() {
         return score;
     }
-
-
-
-
-
-    // Getter and setter methods
 }
-

@@ -44,18 +44,14 @@ public class Endgame extends AppCompatActivity {
                 } else {
                     int playerScore = Integer.parseInt(playerScoreText);
                     addPlayerToLeaderboard(playerName, playerScore);
-
-                    // Clear input fields
                     playerNameEditText.setText("");
                     playerScoreEditText.setText("");
-
-                    // Refresh the leaderboard
                     loadLeaderboard();
                 }
             }
         });
 
-        // Initially load the leaderboard
+
         loadLeaderboard();
     }
 
@@ -66,7 +62,6 @@ public class Endgame extends AppCompatActivity {
         values.put("name", name);
         values.put("score", score);
 
-        // Insert the player's data into the "leaderboard" table
         db.insert("leaderboard", null, values);
 
         db.close();
@@ -74,10 +69,7 @@ public class Endgame extends AppCompatActivity {
 
     private void loadLeaderboard() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        // Query the "leaderboard" table, order by score in descending order
         Cursor cursor = db.query("leaderboard", null, null, null, null, null, "score DESC");
-
         leaderboardTable.removeAllViews(); // Clear the existing rows
 
         while (cursor.moveToNext()) {
@@ -85,7 +77,7 @@ public class Endgame extends AppCompatActivity {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             int score = cursor.getInt(cursor.getColumnIndex("score"));
 
-            // Create a new row and add it to the TableLayout with formatted data
+
             addRowToLeaderboard(rank, name, score);
         }
 
@@ -95,17 +87,14 @@ public class Endgame extends AppCompatActivity {
     private void addRowToLeaderboard(int rank, String name, int score) {
         TableRow row = new TableRow(this);
 
-        // Create TextViews for rank, name, and score with specific formatting
-        TextView rankTextView = createFormattedTextView(String.format("  %5d ", rank)); // Two digits for rank
-        TextView nameTextView = createFormattedTextView(String.format("            %-10s", name)); // Left-align, padded to 20 characters
-        TextView scoreTextView = createFormattedTextView(String.format("%20d", score)); // Right-align, padded to 10 characters
 
-        // Add TextViews to the TableRow
+        TextView rankTextView = createFormattedTextView(String.format("  %5d ", rank));
+        TextView nameTextView = createFormattedTextView(String.format("            %-10s", name));
+        TextView scoreTextView = createFormattedTextView(String.format("%20d", score));
         row.addView(rankTextView);
         row.addView(nameTextView);
         row.addView(scoreTextView);
 
-        // Add the TableRow to the TableLayout
         leaderboardTable.addView(row);
     }
 
