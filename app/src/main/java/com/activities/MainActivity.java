@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         aboutButton = findViewById(R.id.aboutButton);
 
         playButton.setOnClickListener(view -> {
-            Intent playIntent = new Intent(this, selectDifficulty.class);
+            Intent playIntent = new Intent(this, Endgame.class);
             startActivity(playIntent);
         });
 

@@ -1,6 +1,7 @@
 package com.activities;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -25,6 +26,7 @@ class LeaderboardDbHelper extends SQLiteOpenHelper {
         }
     }
 
+
 }
 
 class LeaderboardEntry {
@@ -35,9 +37,6 @@ class LeaderboardEntry {
     public LeaderboardEntry(long id, String name, int score) {
         this.name = name;
         this.score = score;
-    }
-
-    public LeaderboardEntry(String name, int score) {
     }
 
     public String getName() {

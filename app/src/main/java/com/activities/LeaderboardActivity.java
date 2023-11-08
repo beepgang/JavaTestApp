@@ -47,7 +47,7 @@ public class LeaderboardActivity extends AppCompatActivity {
     private void addRowToLeaderboard(int rank, String name, int score) {
         TableRow row = new TableRow(this);
 
-        TextView rankTextView = createFormattedTextView(String.format("  %5d ", rank));
+        TextView rankTextView = createFormattedTextView(String.format("   %5d ", rank));
         TextView nameTextView = createFormattedTextView(String.format("            %-10s", name));
         TextView scoreTextView = createFormattedTextView(String.format("%20d", score));
 
